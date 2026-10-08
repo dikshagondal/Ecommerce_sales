@@ -2,19 +2,20 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-# 1. Dataset load karein
+# 1. Dataset load
+
 df = pd.read_csv("sales_data.csv")
 
 # 2. Data Cleaning
-# Unnecessary column (Row ID) drop karein
+# Unnecessary column (Row ID) drop
 if "Row ID" in df.columns:
     df.drop(columns=["Row ID"], inplace=True)
 
-# Postal Code ko text (string) mein convert karein
+# convert postel code into text(string)
 if "Postal Code" in df.columns:
     df["Postal Code"] = df["Postal Code"].astype(str)
 
-# Missing values hataein
+# Missing values 
 df.dropna(inplace=True)
 
 # 3. Sales Calculations
@@ -38,5 +39,4 @@ plt.ylabel("Sales ($)")
 plt.xticks(rotation=45)
 plt.tight_layout()
 
-# Graph screen par show karne ke liye
 plt.show()
